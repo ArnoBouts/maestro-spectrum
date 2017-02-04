@@ -2,6 +2,6 @@ pipeline:
   publish:
     image: plugins/docker
     registry: no-cloud.fr
-    repo: maestro/spectrum
+    repo: no-cloud.fr/maestro/spectrum
     tag: latest
     file: Dockerfile
