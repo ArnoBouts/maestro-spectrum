@@ -1,7 +1,7 @@
-publish:
-  docker:
-  registry: no-cloud.fr
-  repo: maestro/spectrum
-  tag: latest
-  file: Dockerfile
-  insecure: false 
+pipeline:
+  publish:
+    image: plugins/docker
+    registry: no-cloud.fr
+    repo: maestro/spectrum
+    tag: latest
+    file: Dockerfile
