@@ -12,6 +12,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		cd spectrum2 && \
 		cmake . -DCMAKE_BUILD_TYPE=Debug && \
 		make && \
+		make install && \
 		cp ./packaging/docker/run.sh /run.sh && \
 		cd .. && \
 		rm -rf spectrum2 && \
