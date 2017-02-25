@@ -13,7 +13,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 	echo "---> Installing Spectrum 2" && \
 		git clone git://github.com/hanzz/spectrum2.git && \
 		cd spectrum2 && \
-		git checkout ${SPECTRUM_VERSION}
+		git checkout ${SPECTRUM_VERSION} && \
 		./packaging/fedora/build_rpm.sh && \
 		rpm -U /root/rpmbuild/RPMS/x86_64/*.rpm && \
 		cp ./packaging/docker/run.sh /run.sh && \
