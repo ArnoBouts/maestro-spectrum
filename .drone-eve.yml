@@ -13,4 +13,4 @@ pipeline:
       - git config credential.helper "/node_modules/.bin/git-credential-env --username=${GIT_USER} --password={GIT_PASSORD}"
       - git add Dockerfile
       - git commit -m "Auto update"
-      - git push
+      - git push origin master
