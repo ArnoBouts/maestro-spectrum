@@ -6,6 +6,7 @@ ARG commit=unknown
 RUN echo $commit
 
 ENV SPECTRUM_VERSION f916feb
+ENV TELEGRAM_VERSION 42
 
 # Spectrum 2
 RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel  mysql-devel popt-devel git mercurial libevent-devel qt-devel dbus-glib-devel libcurl-devel wget vim-common protobuf-c-devel protobuf-c-compiler -y && \
@@ -51,6 +52,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 	echo "---> Installing Telegram" && \
 		git clone --recursive https://github.com/majn/telegram-purple && \
 		cd telegram-purple && \
+		git checkout ${TELEGRAM_VERSION}
 		./configure && \
 		make && \
 		make install && \
