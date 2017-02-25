@@ -7,6 +7,10 @@ pipeline:
   deploy:
     image: no-cloud.fr/eve/git
     commands:
+      - git config --global user.name "Eve"
+      - git config --global user.email "arnaud.bouts@gmail.com"
+      - git config --global push.default simple
+      - git config credential.helper "/node_modules/.bin/git-credential-env --username=${GIT_USER} --password={GIT_PASSORD}"
       - git add Dockerfile
       - git commit -m "Auto update"
       - git push
