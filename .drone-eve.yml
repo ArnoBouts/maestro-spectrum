@@ -6,14 +6,12 @@ pipeline:
 
   deploy:
     image: no-cloud.fr/eve/git
-    environment:
-      - GIT_USER=${GIT_USER}
-      - GIT_PASSWORD=${GIT_PASSWORD}
     commands:
       - git config --global user.name "Eve"
       - git config --global user.email "eve@no-cloud.fr"
       - git config --global push.default simple
-      - git remote set-url origin $(echo ${DRONE_REPO_LINK} | sed -e "s#https://#https://${GIT_USER}:${GIT_PASSWORD}@#1")
+      - echo ${DRONE_REPO_LINK} | sed -e "s#https://#https://${GIT_USER}:${GIT_PASSWORD}@#1" >> ~/.git-credentials
+      - git config --global credential.helper store
       - git add Dockerfile
       - git commit -m "Auto update"
       - git push origin master
