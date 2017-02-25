@@ -1,0 +1,12 @@
+pipeline:
+  update-spectrum:
+    image: no-cloud.fr/eve/git
+    commands:
+      - /eve.sh git://github.com/hanzz/spectrum2.git master SPECTRUM_VERSION Dockerfile
+
+  deploy:
+    image: no-cloud.fr/eve/git
+    commands:
+      - git add Dockerfile
+      - git commit -m "Auto update"
+      - git push
