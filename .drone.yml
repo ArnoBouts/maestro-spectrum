@@ -11,6 +11,6 @@ pipeline:
     jid: ${XMPP_JID}
     password: ${XMPP_PASSWORD}
     to_jid: arnaud@arnaudbouts.fr
-    message: "maestro-spectrum build finished with ${DRONE_STATUS} status."
+    message: "maestro-spectrum build finished with ${DRONE_BUILD_STATUS} status."
     when:
       status: [ success, failure ]
