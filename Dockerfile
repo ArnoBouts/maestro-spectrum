@@ -64,7 +64,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		hg clone https://St0ub@bitbucket.org/St0ub/purple-hangouts && \
 
 		cd purple-hangouts && \
-		hg update ${HANGOUTS_VERSION}
+		hg update ${HANGOUTS_VERSION} && \
 		make && \
 		make install && \
 		cd .. && \
