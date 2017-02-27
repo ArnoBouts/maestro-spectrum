@@ -6,11 +6,21 @@ pipeline:
     tag: latest
     file: Dockerfile
 
-  notify:
+  notify-ok:
     image: no-cloud.fr/drone/xmpp
     jid: ${XMPP_JID}
     password: ${XMPP_PASSWORD}
     to_jid: arnaud@arnaudbouts.fr
-    message: "maestro-spectrum build finished with ${DRONE_BUILD_STATUS} status."
+    message: "maestro-spectrum build finished with success status."
     when:
-      status: [ success, failure ]
+      status: [ success ]
+
+  notify-ko:
+    image: no-cloud.fr/drone/xmpp
+    jid: ${XMPP_JID}
+    password: ${XMPP_PASSWORD}
+    to_jid: arnaud@arnaudbouts.fr
+    message: "maestro-spectrum build finished with failure status."
+    when:
+      status: [ failure ]
+
