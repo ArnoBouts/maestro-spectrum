@@ -54,7 +54,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 	echo "---> Installing Telegram" && \
 		git clone --recursive https://github.com/majn/telegram-purple && \
 		cd telegram-purple && \
-		git checkout ${TELEGRAM_VERSION}
+		git checkout ${TELEGRAM_VERSION} && \
 		./configure && \
 		make && \
 		make install && \
