@@ -1,91 +1,162 @@
-FROM fedora:23
-# FROM_DIGEST sha256:24994d55192ca83f7837c5e4c24323b0f78445af37c2abca0019b8fc7ec4852f
+FROM debian:jessie
+# FROM_DIGEST sha256:42
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
-ARG commit=unknown
-RUN echo $commit
 
 ENV SPECTRUM_VERSION f916feb
 ENV TELEGRAM_VERSION 766335c
 ENV HANGOUTS_VERSION a5d524649d93965e42006d7e7263d6b16505106c
-# Spectrum 2
-RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel  mysql-devel popt-devel git mercurial libevent-devel qt-devel dbus-glib-devel libcurl-devel wget vim-common protobuf-c-devel protobuf-c-compiler -y && \
-	echo "---> Installing Spectrum 2" && \
-		git clone git://github.com/hanzz/spectrum2.git && \
-		cd spectrum2 && \
-		git checkout ${SPECTRUM_VERSION} && \
-		./packaging/fedora/build_rpm.sh && \
-		rpm -U /root/rpmbuild/RPMS/x86_64/*.rpm && \
-		cp ./packaging/docker/run.sh /run.sh && \
-		cd .. && \
-		rm -rf spectrum2 && \
-		rm -rf ~/rpmbuild && \
-	echo "---> Installing purple-facebook" && \
-		wget https://github.com/jgeboski/purple-facebook/releases/download/6a0a79182ebc/purple-facebook-6a0a79182ebc.tar.gz && \
-		tar -xf purple-facebook-6a0a79182ebc.tar.gz  && cd purple-facebook-6a0a79182ebc && \
-		./configure && \
-		make && \
-		make install && \
-		cd .. && \
-		rm -rf purple-facebook* && \
-	echo "---> Installing skype4pidgin" && \
-		git clone git://github.com/EionRobb/skype4pidgin.git && \
-		cd skype4pidgin/skypeweb && \
-		make CFLAGS=-DFEDORA=1 && \
-		make install && \
-		cd ../.. && \
-		rm -rf skype4pidgin && \
-	echo "---> Installing transwhat" && \
-		pip install --pre e4u protobuf python-dateutil yowsup2 Pillow==2.9.0 &&\
-		git clone git://github.com/stv0g/transwhat.git &&\
-		git clone git://github.com/tgalal/yowsup.git &&\
-		cd transwhat &&\
-		git worktree add /opt/transwhat &&\
-		cd .. &&\
-		cd yowsup &&\
-		cp -R yowsup /opt/transwhat/yowsup &&\
-		cd .. &&\
-		rm -r transwhat &&\
-		rm -r yowsup &&\
-		rm -rf /opt/transwhat/.git &&\
-		rm -rf /opt/transwhat/.gitignore &&\
-	echo "---> Installing Telegram" && \
-		git clone --recursive https://github.com/majn/telegram-purple && \
-		cd telegram-purple && \
-		git checkout ${TELEGRAM_VERSION} && \
-		./configure && \
-		make && \
-		make install && \
-		rm -rf telegram-purple && \
-	echo "---> Installing Hangout" && \
-		#hg clone https://bitbucket.org/EionRobb/purple-hangouts/ && \
-		hg clone https://St0ub@bitbucket.org/St0ub/purple-hangouts && \
 
-		cd purple-hangouts && \
-		hg update ${HANGOUTS_VERSION} && \
-		make && \
-		make install && \
-		cd .. && \
-		rm -r purple-hangouts && \
-	echo "---> cleanup" && \
-		rm -rf /usr/share/locale/* && \
-		rm -rf /usr/share/doc/* && \
-		rm -rf /usr/share/icons/* && \
-		rm -rf /usr/share/cracklib* && \
-		rm -rf /usr/share/hwdata* && \
-		rm -rf /usr/lib64/libQtGui* && \
-		rm -rf /usr/lib64/libQtSvg* && \
-		rm -rf /usr/lib64/libQtDeclarative* && \
-		rm -rf /usr/lib64/libQtOpenGL* && \
-		rm -rf /usr/lib64/libQtScriptTools* && \
-		rm -rf /usr/lib64/libQtMultimedia* && \
-		rm -rf /usr/lib64/libQtHelp* && \
-		rm -rf /usr/lib64/libQtDesigner* && \
-		rm -rf /usr/lib64/libQt3* && \
-		dnf remove protobuf-devel swiften-devel gcc gcc-c++ libpqxx-devel libevent-devel qt-devel dbus-glib-devel libpurple-devel make rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel zlib-devel libjpeg-devel python-devel  log4cxx-devel mysql-devel popt-devel libcurl-devel spectrum2-debuginfo yum perl wget mercurial vim-common -y && \
-		dnf clean all -y && \
-		rm -rf /var/lib/rpm/*
+RUN apt-get update \
+	&& apt-get install --no-install-recommends --no-install-suggests -y \
+                cmake \
+                debhelper \
+                git \
+                libavahi-client3 \
+                libavahi-client-dev \
+                libavahi-common-dev \
+                libboost-all-dev \
+                libcurl3 \
+                libcurl4-openssl-dev \
+                libdbus-glib-1-2 \
+                libdbus-glib-1-dev \
+                libevent-2.0-5 \
+                libevent-dev \
+                libgcrypt20 \
+                libgcrypt20-dev \
+                libidn11 \
+                libidn11-dev \
+                libjson-glib-1.0-0 \
+                libjson-glib-dev \
+                liblog4cxx10 \
+                liblog4cxx10-dev \
+                libmysqlclient18 \
+                libmysqlclient-dev \
+                libpopt0 \
+                libpopt-dev \
+                libpqxx-4.0 \
+                libpqxx3-dev \
+                libprotobuf-c1 \
+                libprotobuf-c-dev \
+                libprotobuf9 \
+                libprotobuf-dev \
+                libpurple0 \
+                libpurple-dev \
+                libqt4-dev \
+                libsqlite3-0 \
+                libsqlite3-dev \
+                libswiften2 \
+                libswiften-dev \
+                libwebp5 \
+                libwebp-dev \
+                libxml2 \
+                libxml2-dev \
+                mercurial \
+                protobuf-c-compiler \
+                protobuf-compiler \
+                qt5-qmake \
+		vim-common \
+&& echo "---> Installing libCommuni" \
+        && git clone https://github.com/communi/libcommuni.git \
+        && cd libcommuni \
+        && qmake \
+        && make \
+        && make install \
+	&& cd .. \
+	&& rm -rf libcommuni \
+&& echo "---> Installing Spectrum 2" \
+        && git clone git://github.com/hanzz/spectrum2.git \
+        && cd spectrum2 \
+        && git checkout ${SPECTRUM_VERSION} \
+	&& cmake . -DENABLE_PQXX=Off -DENABLE_DOCS=Off -DCMAKE_BUILD_TYPE=Debug  \
+	&& make \
+	&& make install \
+	&& cd .. \
+	&& rm -rf spectrum2 \
+&& echo "---> Installing purple-facebook" \
+	&& curl -Ls https://github.com/jgeboski/purple-facebook/releases/download/6a0a79182ebc/purple-facebook-6a0a79182ebc.tar.gz | tar -xz \
+	&& cd purple-facebook-6a0a79182ebc \
+	&& ./configure \
+	&& make \
+	&& make install \
+	&& cd .. \
+	&& rm -rf purple-facebook* \
+&& echo "---> Installing skype4pidgin" \
+	&& git clone git://github.com/EionRobb/skype4pidgin.git \
+	&& cd skype4pidgin/skypeweb \
+	&& make CFLAGS=-DFEDORA=1 \
+	&& make install \
+	&& cd ../.. \
+	&& rm -rf skype4pidgin \
+# RUN apt-get install -y python-pip
+# RUN        echo "---> Installing transwhat" && \
+#                 pip install --pre e4u protobuf python-dateutil yowsup2 Pillow==2.9.0 &&\
+#                 git clone git://github.com/stv0g/transwhat.git &&\
+#                 git clone git://github.com/tgalal/yowsup.git &&\
+#                 cd transwhat &&\
+#                 git worktree add /opt/transwhat &&\
+#                 cd .. &&\
+#                 cd yowsup &&\
+#                 cp -R yowsup /opt/transwhat/yowsup &&\
+#                 cd .. &&\
+#                 rm -r transwhat &&\
+#                 rm -r yowsup &&\
+#                 rm -rf /opt/transwhat/.git &&\
+#                 rm -rf /opt/transwhat/.gitignore
+&& echo "---> Installing Telegram" \
+	&& git clone --recursive https://github.com/majn/telegram-purple \
+	&& cd telegram-purple \
+	&& git checkout ${TELEGRAM_VERSION} \
+	&& ./configure \
+	&& make \
+	&& make install \
+	&& cd .. \
+	&& rm -rf telegram-purple \
+&& echo "---> Installing Hangout" \
+	#&& hg clone https://bitbucket.org/EionRobb/purple-hangouts/ \
+	&& hg clone https://St0ub@bitbucket.org/St0ub/purple-hangouts \
+	&& cd purple-hangouts \
+	&& hg update ${HANGOUTS_VERSION} \
+	&& make \
+	&& make install \
+	&& cd .. \
+	&& rm -r purple-hangouts \
+&& echo "---> Cleaning" && \
+	&& apt-get purge -y --auto-remove \
+                cmake \
+                debhelper \
+                git \
+                libavahi-client-dev \
+                libavahi-common-dev \
+                libboost-all-dev \
+                libcurl4-openssl-dev \
+                libdbus-glib-1-dev \
+                libevent-dev \
+                libgcrypt20-dev \
+                libidn11-dev \
+                libjson-glib-dev \
+                liblog4cxx10-dev \
+                libmysqlclient-dev \
+                libmysqlclient-dev \
+                libpopt-dev \
+                libpqxx3-dev \
+                libprotobuf-c-dev \
+                libprotobuf-dev \
+                libpurple-dev \
+                libqt4-dev \
+                libsqlite3-dev \
+                libswiften-dev \
+                libwebp-dev \
+                libxml2-dev \
+                mercurial \
+                protobuf-c-compiler \
+                protobuf-compiler \
+                qt5-qmake \
+                vim-common \
+	&& rm -rf /var/lib/apt/lists/*
 
-CMD "/run.sh"
+ADD run.sh /bin/run.sh
+RUN chmod +x /bin/run.sh
 
+CMD "/bin/run.sh"
