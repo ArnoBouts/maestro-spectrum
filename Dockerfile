@@ -122,7 +122,7 @@ RUN apt-get update \
 	&& make install \
 	&& cd .. \
 	&& rm -r purple-hangouts \
-&& echo "---> Cleaning" && \
+&& echo "---> Cleaning" \
 	&& apt-get purge -y --auto-remove \
                 cmake \
                 debhelper \
