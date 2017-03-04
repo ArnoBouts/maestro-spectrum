@@ -10,6 +10,7 @@ ENV HANGOUTS_VERSION a5d524649d93965e42006d7e7263d6b16505106c
 
 RUN apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
+		ca-certificates \
                 cmake \
                 debhelper \
                 git \
@@ -124,6 +125,7 @@ RUN apt-get update \
 	&& rm -r purple-hangouts \
 && echo "---> Cleaning" \
 	&& apt-get purge -y --auto-remove \
+		ca-certificates \
                 cmake \
                 debhelper \
                 git \
