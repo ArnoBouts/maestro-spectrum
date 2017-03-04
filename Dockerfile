@@ -14,6 +14,7 @@ RUN apt-get update \
                 cmake \
                 debhelper \
                 git \
+		g++ \
                 libavahi-client3 \
                 libavahi-client-dev \
                 libavahi-common-dev \
@@ -129,6 +130,7 @@ RUN apt-get update \
                 cmake \
                 debhelper \
                 git \
+		g++ \
                 libavahi-client-dev \
                 libavahi-common-dev \
                 libboost-all-dev \
