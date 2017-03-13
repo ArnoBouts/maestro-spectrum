@@ -6,7 +6,7 @@ VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 
 ENV SPECTRUM_VERSION f916feb
 ENV TELEGRAM_VERSION 766335c
-ENV HANGOUTS_VERSION a5d524649d93965e42006d7e7263d6b16505106c
+ENV HANGOUTS_VERSION a7cae60e549ea0034ec74a2177505c9ec64554fe
 
 RUN apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
