@@ -3,7 +3,7 @@ pipeline:
     image: plugins/docker
     registry: no-cloud.fr
     repo: no-cloud.fr/maestro/spectrum
-    tag: latest
+    tag: maestro
     file: Dockerfile
 
   notify-ok:

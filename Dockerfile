@@ -87,5 +87,11 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		dnf clean all -y && \
 		rm -rf /var/lib/rpm/*
 
+COPY ./hangouts.cfg /etc/spectrum2/transports/hangouts.cfg
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD "/run.sh"
 
