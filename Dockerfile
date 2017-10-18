@@ -14,6 +14,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 	echo "---> Installing Spectrum 2" && \
 		git clone git://github.com/hanzz/spectrum2.git && \
 		cd spectrum2 && \
+		git checkout ${SPECTRUM_VERSION} && \
 		./packaging/fedora/build_rpm.sh && \
 		rpm -U /root/rpmbuild/RPMS/x86_64/*.rpm && \
 		cp ./packaging/docker/run.sh /run.sh && \
@@ -85,6 +86,12 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		dnf remove protobuf-devel swiften-devel gcc gcc-c++ libpqxx-devel libevent-devel qt-devel dbus-glib-devel libpurple-devel make rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel zlib-devel libjpeg-devel python-devel  log4cxx-devel mysql-devel popt-devel libcurl-devel spectrum2-debuginfo yum perl wget mercurial vim-common -y && \
 		dnf clean all -y && \
 		rm -rf /var/lib/rpm/*
+
+COPY ./hangouts.cfg /etc/spectrum2/transports/hangouts.cfg
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD "/run.sh"
 
