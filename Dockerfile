@@ -1,4 +1,4 @@
-FROM fedora:23
+FROM fedora:27
 # FROM_DIGEST sha256:24994d55192ca83f7837c5e4c24323b0f78445af37c2abca0019b8fc7ec4852f
 
 EXPOSE 5222 8080
@@ -10,7 +10,7 @@ ENV SPECTRUM_VERSION 44c7497
 ENV TELEGRAM_VERSION 94dd3be
 ENV HANGOUTS_VERSION 6217b1d465673556b397afd0f87be33ae5687d67
 # Spectrum 2
-RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel  mysql-devel popt-devel git mercurial libevent-devel qt-devel dbus-glib-devel libcurl-devel wget vim-common protobuf-c-devel protobuf-c-compiler -y && \
+RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel -y && \
 	echo "---> Installing Spectrum 2" && \
 		git clone git://github.com/hanzz/spectrum2.git && \
 		cd spectrum2 && \
@@ -83,7 +83,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		rm -rf /usr/lib64/libQtHelp* && \
 		rm -rf /usr/lib64/libQtDesigner* && \
 		rm -rf /usr/lib64/libQt3* && \
-		dnf remove protobuf-devel swiften-devel gcc gcc-c++ libpqxx-devel libevent-devel qt-devel dbus-glib-devel libpurple-devel make rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel zlib-devel libjpeg-devel python-devel  log4cxx-devel mysql-devel popt-devel libcurl-devel spectrum2-debuginfo yum perl wget mercurial vim-common -y && \
+		dnf remove protobuf-devel swiften-devel gcc gcc-c++ libpqxx-devel libev-libevent-devel qt-devel dbus-glib-devel libpurple-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel zlib-devel libjpeg-devel python-devel log4cxx-devel mysql-devel popt-devel libcurl-devel spectrum2-debuginfo wget -y && \
 		dnf clean all -y && \
 		rm -rf /var/lib/rpm/*
 
