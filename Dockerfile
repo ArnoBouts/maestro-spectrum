@@ -1,14 +1,14 @@
 FROM fedora:27
-# FROM_DIGEST sha256:25f7dac76b2c88d8b7e0b1d6213d3406e77c7f230bfa1e66bd1cbb81a944eaaf
+# FROM_DIGEST sha256:ec588fc80b05e19d3006bf2e8aa325f0a2e2ff1f609b7afb39176ca8e3e13467
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 ARG commit=unknown
 RUN echo $commit
 
-ENV SPECTRUM_VERSION 9ad5273
+ENV SPECTRUM_VERSION a6cee45
 ENV TELEGRAM_VERSION 94dd3be
-ENV HANGOUTS_VERSION a4beeb3be8d050a4552a2b4d6a182a7aee22852e
+ENV HANGOUTS_VERSION 96029e946ec98d985e731ec3a71afef865855479
 # Spectrum 2
 RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler json-glib -y && \
 	echo "---> Installing Spectrum 2" && \
