@@ -6,7 +6,7 @@ VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 ARG commit=unknown
 RUN echo $commit
 
-ENV SPECTRUM_VERSION b48628d
+ENV SPECTRUM_VERSION b86ef7b
 ENV TELEGRAM_VERSION 94dd3be
 ENV HANGOUTS_VERSION 96029e946ec98d985e731ec3a71afef865855479
 # Spectrum 2
