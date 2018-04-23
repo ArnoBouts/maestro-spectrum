@@ -6,9 +6,9 @@ VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 ARG commit=unknown
 RUN echo $commit
 
-ENV SPECTRUM_VERSION b86ef7b
+ENV SPECTRUM_VERSION 7a63ea9
 ENV TELEGRAM_VERSION 94dd3be
-ENV HANGOUTS_VERSION 0e137e6bf9e95c5a0bd282f3ad4a5bd00a6968ab
+ENV HANGOUTS_VERSION 9d008f2ebe320b5b060988773925a86df5277139
 # Spectrum 2
 RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler json-glib jsoncpp-devel -y && \
 	echo "---> Installing Spectrum 2" && \
