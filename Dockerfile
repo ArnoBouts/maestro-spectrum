@@ -10,7 +10,7 @@ ENV SPECTRUM_VERSION dd72894
 ENV TELEGRAM_VERSION f38ea48
 ENV HANGOUTS_VERSION 9d008f2ebe320b5b060988773925a86df5277139
 # Spectrum 2
-RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler json-glib jsoncpp-devel -y && \
+RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler jsoncpp-devel -y && \
 	echo "---> Installing Spectrum 2" && \
 		git clone git://github.com/hanzz/spectrum2.git && \
 		cd spectrum2 && \
@@ -85,6 +85,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		rm -rf /usr/lib64/libQt3* && \
 		dnf remove protobuf-devel swiften-devel gcc gcc-c++ libpqxx-devel libev-libevent-devel qt-devel dbus-glib-devel libpurple-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel zlib-devel libjpeg-devel python-devel log4cxx-devel mysql-devel popt-devel libcurl-devel jsoncpp-devel spectrum2-debuginfo wget -y && \
 		dnf clean all -y && \
+                dnf install json-glib -y && \
 		rm -rf /var/lib/rpm/*
 
 COPY ./hangouts.cfg /etc/spectrum2/transports/hangouts.cfg
