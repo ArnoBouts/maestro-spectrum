@@ -89,6 +89,7 @@ RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurp
 		rm -rf /var/lib/rpm/*
 
 COPY ./hangouts.cfg /etc/spectrum2/transports/hangouts.cfg
+COPY ./facebook.cfg /etc/spectrum2/transports/facebook.cfg
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
