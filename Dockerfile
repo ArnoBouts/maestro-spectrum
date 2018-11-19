@@ -8,7 +8,7 @@ RUN echo $commit
 
 ENV SPECTRUM_VERSION c301557
 ENV TELEGRAM_VERSION f686f8a
-ENV HANGOUTS_VERSION 870b2cded1e6baa870cfe42a8854eb0e95316a03
+ENV HANGOUTS_VERSION 833609a6466ecba9e34493e680fd20af31c0027f
 # Spectrum 2
 RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler jsoncpp-devel -y && \
 	echo "---> Installing Spectrum 2" && \
