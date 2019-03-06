@@ -1,12 +1,12 @@
 FROM debian:jessie
-# FROM_DIGEST sha256:f5a4f40b87b43bc92cec4b8138cfd160351bcf242fc4261948d28a3bfa43211c
+# FROM_DIGEST sha256:f3acedf74ce1b8cd4d7963a366c8101e9cae7f48197c76b636e6d5a0bfada627
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 
 ENV SPECTRUM_VERSION 0076bda
 ENV TELEGRAM_VERSION 3477e8d
-ENV HANGOUTS_VERSION 6217b1d465673556b397afd0f87be33ae5687d67
+ENV HANGOUTS_VERSION message
 
 RUN apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
