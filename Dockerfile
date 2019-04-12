@@ -7,7 +7,7 @@ ARG commit=unknown
 RUN echo $commit
 
 ENV SPECTRUM_VERSION 5cd6bf6
-ENV TELEGRAM_VERSION 3477e8d
+ENV TELEGRAM_VERSION 9ba0e57
 ENV HANGOUTS_VERSION message
 # Spectrum 2
 RUN dnf install protobuf protobuf swiften gcc gcc-c++ make libpqxx-devel libpurple-devel protobuf-devel swiften-devel rpm-build avahi-devel boost-devel cmake cppunit-devel expat-devel libcommuni-devel libidn-devel libsqlite3x-devel log4cxx-devel gettext libgcrypt-devel libwebp-devel libpurple-devel zlib-devel json-glib-devel python-pip zlib-devel libjpeg-devel python-devel mysql-devel popt-devel git libev-libevent-devel qt-devel dbus-glib-devel libcurl-devel wget mercurial libtool libgnome-keyring-devel nss-devel protobuf-c-devel protobuf-c-compiler jsoncpp-devel -y && \
