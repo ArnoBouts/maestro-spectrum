@@ -1,5 +1,5 @@
 FROM fedora:27
-# FROM_DIGEST sha256:aab622b0913d704c66c9de1cbac4d915dd956e95853b9bb5472dfa6d0cbf74f3
+# FROM_DIGEST sha256:8ba05cf4f2ad2fe3a2f90bd1c81fc428efae4e7604db76376a511d164fa696af
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
