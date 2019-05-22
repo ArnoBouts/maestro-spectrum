@@ -5,7 +5,7 @@ EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 
 ENV SPECTRUM_VERSION 9f073ba
-ENV TELEGRAM_VERSION 9ba0e57
+ENV TELEGRAM_VERSION b101bbb
 ENV HANGOUTS_VERSION message
 
 RUN apt-get update \
