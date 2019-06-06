@@ -1,12 +1,12 @@
 FROM fedora:27
-# FROM_DIGEST sha256:8ba05cf4f2ad2fe3a2f90bd1c81fc428efae4e7604db76376a511d164fa696af
+# FROM_DIGEST sha256:d9697056b7add7d075b02d1920ec6b587063ac93fe21d83a354b3220ba18bc02
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 ARG commit=unknown
 RUN echo $commit
 
-ENV SPECTRUM_VERSION be70531
+ENV SPECTRUM_VERSION 16b3950
 ENV TELEGRAM_VERSION b101bbb
 ENV HANGOUTS_VERSION message
 # Spectrum 2
