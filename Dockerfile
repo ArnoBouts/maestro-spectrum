@@ -4,7 +4,7 @@ FROM debian:jessie
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
 
-ENV SPECTRUM_VERSION a4648ae
+ENV SPECTRUM_VERSION d900a55
 ENV TELEGRAM_VERSION b101bbb
 ENV HANGOUTS_VERSION message
 
