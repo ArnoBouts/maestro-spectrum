@@ -1,5 +1,5 @@
 FROM debian:jessie
-# FROM_DIGEST sha256:febb7c1c1fc6f3632e50d933d30f2ed6ca9f7a5ad7fc85ed6a8d6dae97c65565
+# FROM_DIGEST sha256:a8ae3c5129fb2e10a62b5c059a24308831508c44018c24ccda2e4fc6fd7cdda7
 
 EXPOSE 5222 8080
 VOLUME ["/etc/spectrum2/transports", "/var/lib/spectrum2"]
